@@ -3,6 +3,7 @@
 
 # 爬虫架构
 http://scrapy-chs.readthedocs.org/zh_CN/latest/topics/architecture.html
+![爬虫架构](http://scrapy-chs.readthedocs.org/zh_CN/latest/_images/scrapy_architecture.png)
 
 # 爬虫类型
 单机、集群
