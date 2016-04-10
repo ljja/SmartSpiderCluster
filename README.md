@@ -2,8 +2,10 @@
 网页全网采集系统，是一款基于http协议的Web信息采集软件，支持集群化部署！
 
 # 爬虫架构
-http://scrapy-chs.readthedocs.org/zh_CN/latest/topics/architecture.html
+
 ![爬虫架构](http://scrapy-chs.readthedocs.org/zh_CN/latest/_images/scrapy_architecture.png)
+
+参考设计：http://scrapy-chs.readthedocs.org/zh_CN/latest/topics/architecture.html
 
 # 爬虫类型
 单机、集群
