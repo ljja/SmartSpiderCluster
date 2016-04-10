@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiderCore", "SpiderCore\SpiderCore.csproj", "{5CD989DA-0A0E-4B9F-97FE-41B46B7E99DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiderCoreTests", "SpiderCoreTests\SpiderCoreTests.csproj", "{DE3C9ABF-3E8A-420B-BA5E-A48AE6B2894F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpiderCore.WinConsole", "SpiderCore.WinConsole\SpiderCore.WinConsole.csproj", "{5A1C0643-8B31-42E9-9F83-9174960D5F55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CD989DA-0A0E-4B9F-97FE-41B46B7E99DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD989DA-0A0E-4B9F-97FE-41B46B7E99DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD989DA-0A0E-4B9F-97FE-41B46B7E99DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD989DA-0A0E-4B9F-97FE-41B46B7E99DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3C9ABF-3E8A-420B-BA5E-A48AE6B2894F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3C9ABF-3E8A-420B-BA5E-A48AE6B2894F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3C9ABF-3E8A-420B-BA5E-A48AE6B2894F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3C9ABF-3E8A-420B-BA5E-A48AE6B2894F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1C0643-8B31-42E9-9F83-9174960D5F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1C0643-8B31-42E9-9F83-9174960D5F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1C0643-8B31-42E9-9F83-9174960D5F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1C0643-8B31-42E9-9F83-9174960D5F55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
