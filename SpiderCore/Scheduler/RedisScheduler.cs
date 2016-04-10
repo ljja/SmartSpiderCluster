@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using SpiderCore.Cache;
 using SpiderCore.Extendsions;
 
-namespace SpiderCore
+namespace SpiderCore.Scheduler
 {
     /// <summary>
     /// 

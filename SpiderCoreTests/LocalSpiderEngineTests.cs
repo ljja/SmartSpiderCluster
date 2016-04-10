@@ -17,7 +17,7 @@ namespace SpiderCore.Tests
         {
             if (RedisContext.RedisDatabase == null)
             {
-                RedisContext.RedisDatabase = ConnectionMultiplexer.Connect("cache.spider.com").GetDatabase();
+                RedisContext.RedisDatabase = ConnectionMultiplexer.Connect("cache.spider.mfniu.com").GetDatabase();
             }
 
             //初始化引擎组件

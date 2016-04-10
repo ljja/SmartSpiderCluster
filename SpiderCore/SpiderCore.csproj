@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apache.NMS">
+      <HintPath>..\packages\Apache.NMS.1.7.1\lib\net40\Apache.NMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Apache.NMS.ActiveMQ">
+      <HintPath>..\packages\Apache.NMS.ActiveMQ.1.7.1\lib\net40\Apache.NMS.ActiveMQ.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -53,7 +59,9 @@
   <ItemGroup>
     <Compile Include="Cache\CacheContext.cs" />
     <Compile Include="Cache\RedisContext.cs" />
-    <Compile Include="RedisScheduler.cs" />
+    <Compile Include="PipelineHandle\ActiveMQPipelineHandle.cs" />
+    <Compile Include="Scheduler\ActiveMQScheduler.cs" />
+    <Compile Include="Scheduler\RedisScheduler.cs" />
     <Compile Include="Extendsions\StackExchangeRedisExtensions.cs" />
     <Compile Include="Extendsions\StringExtendsions.cs" />
     <Compile Include="HtmlMessageContext.cs" />
@@ -66,7 +74,7 @@
     <Compile Include="ISpider.cs" />
     <Compile Include="ISpiderEngine.cs" />
     <Compile Include="PipelineHandle\LogPipelineHandle.cs" />
-    <Compile Include="MemoryScheduler.cs" />
+    <Compile Include="Scheduler\MemoryScheduler.cs" />
     <Compile Include="MessageContext.cs" />
     <Compile Include="Pipeline.cs" />
     <Compile Include="PipelineHandle\RedisPipelineHandle.cs" />
@@ -77,6 +85,7 @@
     <Compile Include="Spider.cs" />
     <Compile Include="LocalSpiderEngine.cs" />
     <Compile Include="Util\NameValue.cs" />
+    <Compile Include="Util\ProcessUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

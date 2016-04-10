@@ -20,7 +20,7 @@ namespace SpiderCore
         }
 
         /// <summary>
-        /// 判断制定的URL哈希是够存在
+        /// 判断指定的URL哈希是否存在
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
@@ -119,7 +119,7 @@ namespace SpiderCore
         /// <param name="html"></param>
         /// <param name="rootUrl"></param>
         /// <returns></returns>
-        private List<string> GetHrefUrlList(string html, string rootUrl)
+        private static IEnumerable<string> GetHrefUrlList(string html, string rootUrl)
         {
 
             if (string.IsNullOrEmpty(html)) return new List<string>();

@@ -2,7 +2,7 @@
 using System.Linq;
 using SpiderCore.Extendsions;
 
-namespace SpiderCore
+namespace SpiderCore.Scheduler
 {
     public class MemoryScheduler : IScheduler
     {
@@ -39,7 +39,7 @@ namespace SpiderCore
 
         public void Switch()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

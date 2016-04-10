@@ -98,7 +98,7 @@ namespace SpiderCore
             Url = string.Empty;
             Method = "GET";
             Encoding = "utf-8";
-            UserAgent = "mfniu-spider";
+            UserAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36";
             ContentType = "text/html";
             Host = String.Empty;
             Referer = String.Empty;
@@ -111,7 +111,7 @@ namespace SpiderCore
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using SpiderCore.Cache;
 using SpiderCore.PipelineHandle;
@@ -11,53 +10,47 @@ namespace SpiderCore.WinConsole
     {
         static void Main(string[] args)
         {
+            // host config
+            // 127.0.0.1 cache.spider.com
             if (RedisContext.RedisDatabase == null)
             {
-                RedisContext.RedisDatabase = ConnectionMultiplexer.Connect("cache.spider.com").GetDatabase();
+                try
+                {
+                    RedisContext.RedisDatabase = ConnectionMultiplexer.Connect("cache.spider.com").GetDatabase();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    return;
+                }
             }
 
-            var localSpiderEngine = new LocalSpiderEngine();
-
-            //初始化引擎组件
-            localSpiderEngine.AddPipelineHandle(new LogPipelineHandle());
-            localSpiderEngine.AddPipelineHandle(new RedisPipelineHandle());
-            
-            if (args != null && args.Length == 3)
+            try
             {
-                var request = GetParamRequest(args);
-                if (request != null)
+                var localSpiderEngine = new LocalSpiderEngine();
+
+                //初始化引擎组件
+                localSpiderEngine.AddPipelineHandle(new ActiveMQPipelineHandle());
+
+                //种子请求地址
+                if (args != null && args.Length >= 3)
                 {
+                    var request = GetParamRequest(args);
+
                     SchedulerManage.Instance.Push(request);
                 }
-            }
-            else if (args != null && args.Length == 5)
-            {
-                int startIndex; int.TryParse(args[3], out startIndex);
-                int endIndex; int.TryParse(args[4], out endIndex);
 
-                for (var i = startIndex; i <= endIndex; i++)
+                //启动抓取引擎，自我循环运行
+                localSpiderEngine.Start();
+
+                while (true)
                 {
-                    var param = args.Clone() as string[];
-                    if (param != null)
-                    {
-                        param[0] = String.Format(param[0], i);
-                        var request = GetParamRequest(param);
-                        if (request != null)
-                        {
-                            SchedulerManage.Instance.Push(request);
-                        }
-                    }
+                    Thread.Sleep(10000);
                 }
-
-                return;
             }
-
-            //启动抓取引擎，自我循环运行
-            localSpiderEngine.Start();
-
-            while (true)
+            catch (Exception exception)
             {
-                Thread.Sleep(10000);
+                Console.WriteLine(exception);
             }
         }
 

@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Threading;
 using log4net;
 using SpiderCore.Extendsions;
+using SpiderCore.Util;
 using StackExchange.Redis;
 
 namespace SpiderCore.Cache
@@ -21,6 +22,22 @@ namespace SpiderCore.Cache
             {
                 return RedisDatabase.JsonGet<T>(key);
             }
+            catch (RedisConnectionException redisConnectionException)
+            {
+                _logger.Error(redisConnectionException);
+
+                ProcessUtil.RestartProcess();
+
+                return null;
+            }
+            catch (TimeoutException timeoutException)
+            {
+                _logger.Error(timeoutException);
+
+                Thread.Sleep(2000);
+
+                return null;
+            }
             catch (Exception ex)
             {
                 _logger.Error(ex);
@@ -37,6 +54,22 @@ namespace SpiderCore.Cache
 
                 return true;
             }
+            catch (RedisConnectionException redisConnectionException)
+            {
+                _logger.Error(redisConnectionException);
+
+                ProcessUtil.RestartProcess();
+
+                return false;
+            }
+            catch (TimeoutException timeoutException)
+            {
+                _logger.Error(timeoutException);
+
+                Thread.Sleep(2000);
+
+                return false;
+            }
             catch (Exception ex)
             {
                 _logger.Error(ex);
@@ -51,6 +84,22 @@ namespace SpiderCore.Cache
             {
                 return RedisDatabase.KeyDelete(key);
             }
+            catch (RedisConnectionException redisConnectionException)
+            {
+                _logger.Error(redisConnectionException);
+
+                ProcessUtil.RestartProcess();
+
+                return false;
+            }
+            catch (TimeoutException timeoutException)
+            {
+                _logger.Error(timeoutException);
+
+                Thread.Sleep(2000);
+
+                return false;
+            }
             catch (Exception ex)
             {
                 _logger.Error(ex);
@@ -62,6 +111,8 @@ namespace SpiderCore.Cache
         public override void Dispose()
         {
         }
+
+        
 
     }
 }

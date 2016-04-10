@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SpiderCore.Scheduler;
 
 namespace SpiderCore
 {
     public sealed class SchedulerManage
     {
-        private readonly static IScheduler Scheduler = new RedisScheduler();
+        private readonly static IScheduler Scheduler = new ActiveMQScheduler();
 
         public static IScheduler Instance
         {

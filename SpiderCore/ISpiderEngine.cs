@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SpiderCore
+﻿namespace SpiderCore
 {
     /// <summary>
     /// 
@@ -68,6 +63,6 @@ namespace SpiderCore
         /// <summary>
         /// 移除管道处理
         /// </summary>
-        void RemovePipelineHandle(SpiderCore.IPipelineHandle handle);
+        void RemovePipelineHandle(IPipelineHandle handle);
     }
 }

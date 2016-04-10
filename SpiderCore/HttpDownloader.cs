@@ -15,6 +15,10 @@ namespace SpiderCore
 
         public Response Download(Request request)
         {
+            //启动计时器
+            var stopwatch = new Stopwatch();
+            Response response = null;
+
             try
             {
                 if (request.Sleep > 0)
@@ -22,8 +26,6 @@ namespace SpiderCore
                     Thread.Sleep(request.Sleep);
                 }
 
-                //启动计时器
-                var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
                 //Build Request
@@ -71,7 +73,7 @@ namespace SpiderCore
                 //GetResponse
                 var rep = (HttpWebResponse)req.GetResponse();
 
-                var response = GetResponseContext(rep, request.Encoding);
+                response = GetResponseContext(rep, request.Encoding);
 
                 if (response == null) return null;
 
@@ -102,12 +104,37 @@ namespace SpiderCore
 
                 return response;
             }
+            catch (TimeoutException timeoutException)
+            {
+                _logger.Error(timeoutException);
+            }
             catch (Exception ex)
             {
                 //抓取错误,切换网站
                 SchedulerManage.Instance.Switch();
 
                 _logger.Error(ex);
+            }
+            finally
+            {
+                if (stopwatch.IsRunning)
+                {
+                    stopwatch.Stop();
+                }
+
+                if (response != null && response.GetType() == typeof(HtmlResponse))
+                {
+                    var htmlResponse = response as HtmlResponse;
+                    if (htmlResponse != null)
+                    {
+                        Console.WriteLine("{0}-{1}-{2}", stopwatch.Elapsed, htmlResponse.Html.Length, request.Url);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("{0}-{1}", stopwatch.Elapsed, request.Url);
+                }
+
             }
 
             return null;
